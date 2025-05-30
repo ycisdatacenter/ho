@@ -29,7 +29,8 @@ export default function ManageNotices() {
   const deleteNotice = async (id) => {
     if (confirm("Are you sure you want to delete this notice?")) {
       try {
-        await fetch(`/api/deleteNotice/${id}`, { method: "DELETE" });
+        await fetch(`/api/deleteNotice?id=${id}`, { method: "DELETE" });
+
         fetchNotices(); // Refresh the list after deletion
       } catch (error) {
         console.error("Failed to delete notice:", error);

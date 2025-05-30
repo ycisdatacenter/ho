@@ -58,7 +58,7 @@ const ScrollingNews = () => {
               </span>
             ))
           ) : (
-            <span>No news available</span>
+            <span></span>
           )}
         </div>
       </div>

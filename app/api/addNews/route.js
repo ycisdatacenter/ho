@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs/promises';
-import pool from '@/lib/db'; // Correct import
+import pool from '@/lib/db';
 
 export async function POST(req) {
   const formData = await req.formData();
@@ -18,8 +18,10 @@ export async function POST(req) {
   const buffer = Buffer.from(bytes);
 
   const fileName = Date.now() + '_' + file.name;
-  const filePath = `public/uploads/${fileName}`;
-  const dbPath = `/uploads/${fileName}`;
+  const uploadDir = path.join(process.cwd(), 'public/uploads');
+  await fs.mkdir(uploadDir, { recursive: true }); // ✅ ensure dir exists
+  const filePath = path.join(uploadDir, fileName);
+  const dbPath = `/uploads/${fileName}`; // ✅ this will be used for frontend display
 
   try {
     await fs.writeFile(filePath, buffer);
@@ -35,3 +37,4 @@ export async function POST(req) {
     return NextResponse.json({ message: 'Upload failed', error: error.message }, { status: 500 });
   }
 }
+

@@ -7,25 +7,25 @@ import Image from "next/image";
 const articles = [
   {
     title: "Rayat Shikshan Sanstha, Administrative Building",
-    image: "http://www.rayatshikshan.edu/WebImages/713-1.jpg",
+    image: "/regional/reg1.jpg",
     description:
       "Rayat Shikshan Sanstha, Administrative Building 3rd Floor- Inspector Office, Central Region, Satara, Phone: (02162)234279",
   },
   {
     title: "Inspector Office, Southern Region, Sangli",
-    image: "http://www.rayatshikshan.edu/WebImages/713-2.jpg",
+    image: "/regional/reg2.jpg",
     description:
       "Inspector Office, Southern Region, Sangli. Phone:(0233)2330992, Fax:2333376..",
   },
   {
     title: "Inspector Office, Northern Region, Ahmednagar",
-    image: "http://www.rayatshikshan.edu/WebImages/713-3.jpg",
+    image: "/regional/reg3.jpg",
     description:
       "Inspector Office, Northern Region, Ahmednagar. Phone:(0241)2323236,Fax:2328218.",
   },
   {
     title: "Inspector Office, Western Region, Aundhgaon",
-    image: "http://www.rayatshikshan.edu/WebImages/713-4.jpg",
+    image: "/regional/reg4.jpg",
     description:
       "Inspector Office, Western Region, Aundhgaon. Pune:(020)25888703 Fax:25890866.",
   },

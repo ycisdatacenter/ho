@@ -52,7 +52,6 @@ const Navbar = () => {
             <ul className="md:absolute md:top-full left-0 bg-white text-black shadow-md py-0 w-60 z-10 md:block">
               {[
                 ['/history', 'History'],
-                ['/organization', 'Organization'],
                 ['/visionmission', 'Vision & Mission'],
                 ['/karmaveer', ' Dr.Karmaveer Bhaurao Patil'],
                 ['/awards', 'Awards & Honours'],
@@ -70,7 +69,7 @@ const Navbar = () => {
         </li>
 
         {/* Facilities Dropdown */}
-        <li
+        {/* <li
           className="relative"
           onMouseEnter={() => !mobileMenuOpen && toggleDropdown('facilities')}
           onMouseLeave={() => !mobileMenuOpen && toggleDropdown(null)}
@@ -94,7 +93,7 @@ const Navbar = () => {
               </li>
             </ul>
           )}
-        </li>
+        </li> */}
 
         {/* Branches Dropdown */}
         <li
@@ -113,18 +112,18 @@ const Navbar = () => {
               <li>
                 <Link href="/ashramshala" className="block px-4 py-2 hover:bg-gray-200">Ashramshala</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/karmaveervidyaprabodhini" className="block px-4 py-2 hover:bg-gray-200">Karmaveer Vidya Prabodhini</Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link href="/colleges" className="block px-4 py-2 hover:bg-gray-200">Colleges</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/teachertrainingschools" className="block px-4 py-2 hover:bg-gray-200">Teacher Training Schools</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/primaryschools" className="block px-4 py-2 hover:bg-gray-200">Primary Schools</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/secondaryschools" className="block px-4 py-2 hover:bg-gray-200">Secondary Schools</Link>
               </li>
@@ -134,13 +133,14 @@ const Navbar = () => {
 
         {/* Static Links */}
         {[
+          ['/management', 'Management'],
           ['/academics', 'Academics'],
           ['/research', 'Research'],
           ['/recruitment', 'Recruitment'],
-          ['/quick-links', 'Quick Links'],
-          ['/centenary-projects', 'Centenary Projects'],
+          ['/quicklinks', 'Quick Links'],
+          // ['/centenary-projects', 'Centenary Projects'],
           ['/ebooks', 'eBooks'],
-          ['/online-info', 'Online Info'],
+          ['/onlineinfo', 'Online Info'],
           ['/tender', 'Tender'],
           ['/feedback', 'Feedback'],
          

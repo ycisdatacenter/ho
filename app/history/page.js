@@ -52,15 +52,7 @@ export default function History() {
           Sou. Laxmibai Patil, with her exemplary sacrifices made to turn the mission into a reality.
         </p>
         
-        <div className="flex justify-center my-10">
-          <Image
-            src="/images/karmaveer.jpg"
-            width={600}
-            height={400}
-            alt="Karmaveer Bhaurao Patil"
-            className="rounded-lg shadow-lg"
-          />
-        </div>
+       
 
         <p className="text-lg text-gray-700 leading-relaxed text-justify">
           The Rayat Shikshan Sanstha is one of the leading educational institutions in Asia. The value of its

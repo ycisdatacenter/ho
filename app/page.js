@@ -14,6 +14,7 @@ import AboutRayat from "./components/AboutRayat";
 import Logo from "./components/Logo";
 import ThreeSections from "./components/ThreeSections";
 import RecentSchoolActivity from "./components/RecentSchoolActivity";
+import PrincipalDesk from "./components/PrincipalDesk";
 
 export default function Home() {
   return (
@@ -28,7 +29,7 @@ export default function Home() {
 
       {/* About Section */}
      
-
+<PrincipalDesk /> <br />
       {/* News Section */}
      <ThreeSections />
 
@@ -42,6 +43,7 @@ export default function Home() {
 {/* <RecentSchoolActivity /> */}
 <Regional />
 <br />
+
 <Achievements />
 <Alumni /><br/>
 <Logo />

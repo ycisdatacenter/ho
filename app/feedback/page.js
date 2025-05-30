@@ -46,13 +46,18 @@ export default function FeedbackPage() {
 
   // List of departments (Replace these with actual departments)
   const departments = [
-    "Computer Science",
-    "Mechanical Engineering",
-    "Electrical Engineering",
-    "Civil Engineering",
-    "Business Administration",
-    "Mathematics",
-    "Physics",
+    "Establishment",
+    "Higher Education",
+    "Secondary Education",
+    "Junior College",
+    "Leagal",
+    "Property/Land/Agriculture",
+    "Audit",
+    "Account",
+    "Record",
+    "Karmaveer Vidya Prabhodhini",
+    "IT",
+    
   ];
 
   return (

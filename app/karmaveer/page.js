@@ -1,8 +1,12 @@
 'use client';
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Image from 'next/image'; // Import Image component from Next.js
+import Image from 'next/image';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import HeaderSection from "../components/HeaderSection";
+import Header from "../components/Header";
+import Link from "next/link";
 
 const KVP = () => {
   const Tabs = () => {
@@ -15,7 +19,6 @@ const KVP = () => {
         content: (
           <>
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2 p-4 lg:p-0">
-              {/* Text */}
               <motion.div
                 className="w-full lg:w-2/3 text-justify px-4 lg:px-16"
                 initial={{ opacity: 0, y: 50 }}
@@ -27,12 +30,12 @@ const KVP = () => {
                   Biography
                 </h2>
                 <p className="text-gray-900 text-sm sm:text-base">
-                  Dr. Karmaveer Bhaurao Patil was born on 22 September, 1887 at Kumbhoj, in the Kolhapur district of Maharashtra...
-                  {/* Truncated for brevity */}
+                  Dr. Karmaveer Bhaurao Patil was born on 22 September 1887 at Kumbhoj in the Kolhapur district of Maharashtra. He was a prominent social reformer, educationist, and freedom fighter who dedicated his life to the upliftment of the underprivileged through education. Deeply influenced by the teachings of Mahatma Jyotirao Phule and Shahu Maharaj, he believed that education was the most powerful tool for social change.
+                  <br /><br />
+                  In 1919, he founded the Rayat Shikshan Sanstha, one of the largest educational institutions in India, with the goal of bringing education to the rural masses, especially the marginalized communities. His “earn and learn” concept helped poor students access education. He was awarded the Padma Bhushan in 1959.
                 </p>
               </motion.div>
 
-              {/* Image */}
               <motion.div
                 className="w-full lg:w-1/3 flex justify-center items-center"
                 initial={{ opacity: 0, y: 50 }}
@@ -40,20 +43,11 @@ const KVP = () => {
                 transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="relative w-2/3 sm:w-1/2 md:w-full lg:w-auto">
-                  <Image
-                    src="/Karmveer.jpg"
-                    alt="Dr. Karmaveer Bhaurao Patil"
-                    className="shadow-lg rounded-lg"
-                    width={500} // Specify width
-                    height={500} // Specify height
-                  />
-                </div>
+               
               </motion.div>
             </div>
 
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2 p-4 lg:p-10">
-              {/* Second image */}
               <motion.div
                 className="w-full lg:w-1/3 flex justify-center items-center"
                 initial={{ opacity: 0, x: 50 }}
@@ -61,18 +55,9 @@ const KVP = () => {
                 transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="relative w-2/3 sm:w-1/2 md:w-full lg:w-auto">
-                  <Image
-                    src="/Karmveer1.gif"
-                    alt="Dr. Karmaveer Bhaurao Patil"
-                    className="shadow-lg rounded-lg"
-                    width={500} // Specify width
-                    height={500} // Specify height
-                  />
-                </div>
+               
               </motion.div>
 
-              {/* More Text */}
               <motion.div
                 className="w-full lg:w-2/3 text-justify px-4 lg:px-16"
                 initial={{ opacity: 0, x: -50 }}
@@ -81,8 +66,9 @@ const KVP = () => {
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <p className="text-gray-900 text-sm sm:text-base">
-                  It is a significant coincidence that Mahatma Gandhi’s Freedom Movement...
-                  {/* Truncated for brevity */}
+                  He was awarded the Padma Bhushan in 1959 by the Government of India for his immense contribution to education and social work.
+                  <br /><br />
+                  Dr. Patil passed away on 9 May 1959, but his legacy continues to inspire generations.
                 </p>
               </motion.div>
             </div>
@@ -101,12 +87,12 @@ const KVP = () => {
               transition={{ duration: 0.8, ease: 'easeOut' }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <h2 className="text-[9vw] sm:text-[7vw] md:text-[5vw] lg:text-[4vw] xl:text-[3vw] font-bold text-cyan-700 pb-2 font-mono">
+              <h2 className="text-[6vw] sm:text-[4.5vw] md:text-[3.5vw] lg:text-[2.8vw] xl:text-[2.2vw] font-bold text-cyan-700 pb-2 font-mono">
                 Contribution by Sou. Vahini
               </h2>
               <p className="text-gray-900 text-sm sm:text-base">
-                Karmaveer Bhaurao Patil alias Anna, his wife Sou. Laxmibai Patil alias Vahini...
-                {/* Truncated for brevity */}
+                Sou. Laxmibai Patil, known as Vahini, was the wife of Karmaveer Bhaurao Patil. While Karmaveer was the visionary, Vahini was the silent force of strength behind him. She provided unwavering emotional and practical support throughout his journey in establishing Rayat Shikshan Sanstha. <br /><br />
+                Her sacrifices, determination, and resilience contributed immensely to the success of the mission for social change through education.
               </p>
             </motion.div>
 
@@ -117,15 +103,7 @@ const KVP = () => {
               transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <div className="relative w-2/3 sm:w-1/2 md:w-full lg:w-auto">
-                <Image
-                  src="/Laxmibai.jpg"
-                  alt="Sou. Laxmibai Patil"
-                  className="shadow-lg rounded-lg"
-                  width={500} // Specify width
-                  height={500} // Specify height
-                />
-              </div>
+              
             </motion.div>
           </div>
         ),
@@ -137,21 +115,21 @@ const KVP = () => {
           <div className="flex flex-col lg:p-10 gap-10 justify-center items-center">
             <div className="relative w-2/3 sm:w-1/2 md:w-full lg:w-1/2">
               <Image
-                src="/Karmveer2.jpg"
-                alt="Dr. Karmaveer Bhaurao Patil"
+                src="/images/rayat1.jpg"
+                alt="Social activities"
                 className="shadow-lg rounded-lg"
-                width={500} // Specify width
-                height={500} // Specify height
+                width={500}
+                height={500}
               />
             </div>
             <div>
               <ul className="list-disc list-inside text-gray-900 text-sm sm:text-base px-4 lg:px-16">
-                <li>Participation in Shikshan Prasarak Mandal, Dudhgaon Dist-Sangli in 1909.</li>
-                <li>Founded Rayat Shikshan Sanstha at Kale Tal-Karad Dist-Satara in 1919...</li>
-                <li>Opened hostel at Nerle, Tal-Walva in 1921</li>
-                <li>Opened Rajarshi Chhatrapati Shahu Maharaj Boarding at Satara in 1924...</li>
-                <li>Opened Union Boarding House at Pune in 1932...</li>
-                <li>Registered Rayat Shikshan Sanstha in 1935 and started Training College...</li>
+                <li>Participation in Shikshan Prasarak Mandal, Dudhgaon in 1909.</li>
+                <li>Founded Rayat Shikshan Sanstha at Kale in 1919.</li>
+                <li>Opened hostel at Nerle in 1921.</li>
+                <li>Started Rajarshi Chhatrapati Shahu Maharaj Boarding in 1924.</li>
+                <li>Established Union Boarding House at Pune in 1932.</li>
+                <li>Registered Rayat Shikshan Sanstha and started Training College in 1935.</li>
               </ul>
             </div>
           </div>
@@ -161,7 +139,36 @@ const KVP = () => {
 
     return (
       <div className="w-full">
-        {/* Tab Buttons */}
+        <HeaderSection />
+        <Header />
+        <Navbar />
+
+        {/* Hero Banner */}
+        <section className="relative w-full h-[100px]">
+          <Image
+            src="/images/academics-banner.jpg"
+            alt="Academics"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-80"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
+            <h3 className="text-white text-3xl md:text-4xl font-extrabold drop-shadow-lg">HISTORY</h3>
+          </div>
+        </section>
+
+        {/* Breadcrumb */}
+        <div className="bg-teal-900 text-white py-3">
+          <div className="container mx-auto flex justify-center space-x-2 text-sm">
+            <Link href="/" className="flex items-center space-x-1 hover:text-yellow-400">
+              <span>🏠</span><span>Home</span>
+            </Link>
+            <span className="text-gray-400">›</span>
+            <span className="text-yellow-400">HISTORY</span>
+          </div>
+        </div>
+
+        {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-4 p-4">
           {tabsData.map((tab) => (
             <button
@@ -180,15 +187,13 @@ const KVP = () => {
 
         {/* Tab Content */}
         <div className="mt-6">{tabsData.find((tab) => tab.id === activeTab)?.content}</div>
+
+        <Footer />
       </div>
     );
   };
 
-  return (
-    <div className="min-h-screen bg-white">
-      <Tabs />
-    </div>
-  );
+  return <div className="min-h-screen bg-white"><Tabs /></div>;
 };
 
 export default KVP;

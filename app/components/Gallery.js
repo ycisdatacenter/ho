@@ -10,9 +10,14 @@ const Gallery = () => {
       image: '/images/SP.jpg', // Path to the image
     },
     {
-      name: 'Hou’ble Chandrakant Narayan Dalvi, IAS(Retd)',
+      name: 'Hon’ble Chandrakant Narayan Dalvi, IAS(Retd)',
       title: 'Chairman',
       image: '/images/chairman1.jpg', // Path to the image
+    },
+    {
+      name: 'Hon’ble Dr. Anil Patil',
+      title: 'Organizer',
+      image: '/images/Organizer.jpg',
     },
     {
       name: 'Hon’ble Adv. Bhagirath Nivrutti Shinde',
@@ -24,11 +29,7 @@ const Gallery = () => {
       title: 'Secretary',
       image: '/images/SECRETY.jpeg',
     },
-    {
-      name: 'Dr. Anil Patil',
-      title: 'Organizer',
-      image: '/images/Organizer.jpg',
-    },
+    
   ];
 
   return (

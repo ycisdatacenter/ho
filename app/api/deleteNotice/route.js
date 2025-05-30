@@ -38,3 +38,4 @@ export async function DELETE(req) {
     return NextResponse.json({ message: "Failed to delete notice", error: error.message }, { status: 500 });
   }
 }
+

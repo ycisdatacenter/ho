@@ -11,16 +11,16 @@ const tabs = ["Management", "Administration", "Committees", "Regional Offices"];
 const councilMembers = [
   { name: "Hon'ble Chandrakant Narayan Dalvi, IAS(Retd)", image: "/organization/ChandrakantDalavi.jpg" },
   { name: "Hon'ble Adv. Bhagirath Nivrutti Shinde", image: "/organization/BhagirathShinde.jpeg" },
-  { name: "Ms. Pooja Sinha", image: "/images/member3.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" }, 
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
-  { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Ms. Pooja Sinha", image: "/images/member3.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" }, 
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
+  // { name: "Mr. Arjun Patel", image: "/images/member4.jpg" },
   
 ];
 

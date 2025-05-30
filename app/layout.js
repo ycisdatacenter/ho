@@ -1,8 +1,6 @@
-"use client"; // ✅ If you really need it to be a client component
-
-import { Geist, Geist_Mono } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
 import "./globals.css";
+import { Geist, Geist_Mono } from "next/font/google";
+import RootLayoutClient from "./RootLayoutClient"; // 👈 Import the new file
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,13 +12,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Server-side metadata allowed here
+export const metadata = {
+  title: "rayatshiksha",
+  icons: {
+    icon: "/images/logo.png", // ✅ Make sure this exists in /public/images
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+        <RootLayoutClient>{children}</RootLayoutClient>
       </body>
     </html>
   );

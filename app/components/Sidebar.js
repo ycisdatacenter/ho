@@ -71,7 +71,8 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("addNews")}
+                   onClick={() => router.push("/addnews")}
+
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <PlusCircle className="w-4 h-4 mr-2" alt="Add News Icon" /> Add News
@@ -79,7 +80,7 @@ export default function Sidebar({ setActiveSection }) {
                 </li>
                 <li className="mt-2">
                   <button
-                    onClick={() => setActiveSection("manageNews")}
+                 onClick={() => router.push("/managenews")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <ClipboardList className="w-4 h-4 mr-2" alt="Manage News Icon" /> Manage News
@@ -107,7 +108,7 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("addNotice")}
+                     onClick={() => router.push("/addnotice")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <PlusCircle className="w-4 h-4 mr-2" alt="Add Notice Icon" /> Add Notice
@@ -115,7 +116,7 @@ export default function Sidebar({ setActiveSection }) {
                 </li>
                 <li className="mt-2">
                   <button
-                    onClick={() => setActiveSection("manageNotices")}
+                    onClick={() => router.push("/managenotices")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <ClipboardList className="w-4 h-4 mr-2" alt="Manage Notices Icon" /> Manage Notices
@@ -143,7 +144,7 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("manageSchoolNews")}
+                   onClick={() => router.push("/adminschoolnews")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <ClipboardList className="w-4 h-4 mr-2" alt="Manage School News Icon" /> Manage School News
@@ -153,33 +154,42 @@ export default function Sidebar({ setActiveSection }) {
             )}
           </li>
 
-          {/* School Events */}
+{/* recruitment*/}
           <li className="mb-3">
             <button
-              onClick={() => toggleMenu("seventOpen")}
+              onClick={() => toggleMenu("recruitmentOpen")}
               className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
             >
-              <Calendar className="w-5 h-5 mr-2" alt="School Events Icon" /> School Events
+              <Settings className="w-5 h-5 mr-2" alt="Notices Icon" /> Recruitment
               <ChevronDown
                 className={`w-4 h-4 ml-auto transition-transform ${
-                  menuState.seventOpen ? "rotate-180" : ""
+                  menuState.recruitmentOpen ? "rotate-180" : ""
                 }`}
                 alt="Chevron Icon"
               />
             </button>
-            {menuState.seventOpen && (
+            {menuState.recruitmentOpen && (
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("manageSchoolEvents")}
+                     onClick={() => router.push("/addrecruitment")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
-                    <ClipboardList className="w-4 h-4 mr-2" alt="Manage School Events Icon" /> Manage School Events
+                    <PlusCircle className="w-4 h-4 mr-2" alt="Add Notice Icon" /> Add Recruitment
+                  </button>
+                </li>
+                <li className="mt-2">
+                  <button
+                    onClick={() => router.push("/managerecruitment")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <ClipboardList className="w-4 h-4 mr-2" alt="Manage Notices Icon" /> Manage Recruitment
                   </button>
                 </li>
               </ul>
             )}
           </li>
+          
 
           {/* Slider */}
           <li className="mb-3">
@@ -199,7 +209,7 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("addGallery")}
+                    onClick={() => router.push("/addimage")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <PlusCircle className="w-4 h-4 mr-2" alt="Add Image Icon" /> Add Image
@@ -227,7 +237,7 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("addRecentActivity")}
+                    onClick={() => router.push("/addevents")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <PlusCircle className="w-4 h-4 mr-2" alt="Add Recent Activity Icon" /> Add Recent Activity
@@ -235,7 +245,7 @@ export default function Sidebar({ setActiveSection }) {
                 </li>
                 <li className="mt-2">
                   <button
-                    onClick={() => setActiveSection("manageRecentActivities")}
+                   onClick={() => router.push("/manageevents")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <ClipboardList className="w-4 h-4 mr-2" alt="Manage Recent Activities Icon" /> Manage Recent Activities
@@ -263,7 +273,7 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                    onClick={() => setActiveSection("addAchievement")}
+                    onClick={() => router.push("/addachievements")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <PlusCircle className="w-4 h-4 mr-2" alt="Add Achievement Icon" /> Add Achievement
@@ -271,7 +281,7 @@ export default function Sidebar({ setActiveSection }) {
                 </li>
                 <li className="mt-2">
                   <button
-                    onClick={() => setActiveSection("manageAchievements")}
+                    onClick={() => router.push("/manageachievements")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
                     <ClipboardList className="w-4 h-4 mr-2" alt="Manage Achievements Icon" /> Manage Achievements
@@ -281,6 +291,173 @@ export default function Sidebar({ setActiveSection }) {
             )}
           </li>
 
+
+          <li className="mb-3">
+            <button
+              onClick={() => toggleMenu("achievementsnewsOpen")}
+              className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+            >
+              <Trophy className="w-5 h-5 mr-2" /> Achievements News
+              <ChevronDown
+                className={`w-4 h-4 ml-auto transition-transform ${
+                  menuState.achievementsnewsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {menuState.achievementsnewsOpen && (
+              <ul className="ml-6 mt-2">
+                <li>
+                  <button
+                 onClick={() => router.push("/addachievementsnews")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <PlusCircle className="w-4 h-4 mr-2" /> Add Achievement News
+                  </button>
+                </li>
+                <li className="mt-2">
+                  <button
+                 onClick={() => router.push("/manageachievementsnews")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <ClipboardList className="w-4 h-4 mr-2" /> Manage Achievements News
+                  </button>
+                </li>
+              </ul>
+            )}
+          </li>
+
+{/* Add Managements Section */}
+          <li className="mb-3">
+            <button
+              onClick={() => toggleMenu("managementsnewsOpen")}
+              className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+            >
+              <Trophy className="w-5 h-5 mr-2" /> Managements
+              <ChevronDown
+                className={`w-4 h-4 ml-auto transition-transform ${
+                  menuState.managementsnewsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {menuState.managementsnewsOpen && (
+              <ul className="ml-6 mt-2">
+                <li>
+                  <button
+                    onClick={() => router.push("/addmanagements")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <PlusCircle className="w-4 h-4 mr-2" /> Add Managements
+                  </button>
+                </li>
+                <li className="mt-2">
+                  <button
+                      onClick={() => router.push("/managemanagements")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <ClipboardList className="w-4 h-4 mr-2" /> Manage Managements
+                  </button>
+                </li>
+              </ul>
+            )}
+          </li>
+
+{/* Scrolling News Section */}
+<li className="mb-3">
+            <button
+              onClick={() => toggleMenu("scrollingNewsOpen")}
+              className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+            >
+              <Newspaper className="w-5 h-5 mr-2" /> Scrolling News
+              <ChevronDown
+                className={`w-4 h-4 ml-auto transition-transform ${
+                  menuState.scrollingNewsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {menuState.scrollingNewsOpen && (
+              <ul className="ml-6 mt-2">
+                <li>
+                  <button
+                      onClick={() => router.push("/addscrollingnews")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <PlusCircle className="w-4 h-4 mr-2" /> Add Scrolling News
+                  </button>
+                </li>
+                <li className="mt-2">
+                  <button
+                      onClick={() => router.push("/managescrollingnews")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <ClipboardList className="w-4 h-4 mr-2" /> Manage Scrolling News
+                  </button>
+                </li>
+              </ul>
+            )}
+
+            {/* Our Alumni */}
+            <li className="mb-3">
+            <button
+              onClick={() => toggleMenu("alumniOpen")}
+              className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+            >
+              <GraduationCap className="w-5 h-5 mr-2" /> Our Alumni
+              <ChevronDown
+                className={`w-4 h-4 ml-auto transition-transform ${
+                  menuState.alumniOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {menuState.alumniOpen && (
+              <ul className="ml-6 mt-2">
+                <li>
+                  <button
+                     onClick={() => router.push("/addalumni")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <PlusCircle className="w-4 h-4 mr-2" /> Add Alumni
+                  </button>
+                </li>
+                <li className="mt-2">
+                  <button
+                     onClick={() => router.push("/managealumni")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <ClipboardList className="w-4 h-4 mr-2" /> Manage Alumni
+                  </button>
+                </li>
+              </ul>
+            )}
+          </li>
+
+          <li className="mb-3">
+            <button
+              onClick={() => toggleMenu("feedbackOpen")}
+              className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+            >
+              <GraduationCap className="w-5 h-5 mr-2" /> Feedback
+              <ChevronDown
+                className={`w-4 h-4 ml-auto transition-transform ${
+                  menuState.feedbackOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {menuState.feedbackOpen && (
+              <ul className="ml-6 mt-2">
+                <li>
+                  <button
+                     onClick={() => router.push("/managefeedback")}
+                    className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
+                  >
+                    <PlusCircle className="w-4 h-4 mr-2" />Manage Feedback
+                  </button>
+                </li>
+
+              </ul>
+            )}
+          </li>
+
+          </li>
           {/* Logout */}
           <li className="mt-auto">
             <button

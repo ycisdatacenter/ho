@@ -25,6 +25,7 @@ export default function AddNews() {
     formData.append("date", date);
     formData.append("file", file);
 
+
     const response = await fetch("/api/addNews", {
       method: "POST",
       body: formData,
@@ -38,6 +39,10 @@ export default function AddNews() {
       setDate("");
       setFile(null);
       router.push("/managenews");
+
+
+
+
     }
   };
 
@@ -141,3 +146,5 @@ export default function AddNews() {
     </div>
   );
 }
+
+
