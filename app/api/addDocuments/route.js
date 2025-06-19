@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { IncomingForm } from "formidable";
-import mysql from "mysql2/promise";
+import pool from "@/lib/db"; // Use the shared pool instead of direct connection
 
 // Ensure upload directory exists
 const uploadDir = path.join(process.cwd(), "public/uploads");
@@ -54,24 +54,20 @@ export async function POST(req) {
     const filePath = path.join(uploadDir, fileName);
     fs.writeFileSync(filePath, fileBuffer);
 
-    // Database connection
-    const connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "", // Update with your MySQL password
-      database: "rayat",
-    });
+    // Get connection from pool instead of creating a new connection
+    const connection = await pool.getConnection();
 
-    // Insert into `notices` table
+    // Insert into `downloads` table
     await connection.execute(
       "INSERT INTO downloads (title, date, file_path) VALUES (?, ?, ?)",
       [title, date, `/uploads/${fileName}`]
     );
 
-    await connection.end();
+    // Release the connection back to the pool
+    connection.release();
 
     return NextResponse.json(
-      { message: "Notice added successfully!", filePath: `/uploads/${fileName}` },
+      { message: "Document added successfully!", filePath: `/uploads/${fileName}` },
       { status: 200 }
     );
   } catch (error) {

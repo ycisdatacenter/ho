@@ -26,7 +26,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-h-[400px] md:h-[600px] lg:h-[700px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={0}
@@ -40,22 +40,47 @@ const HeroSlider = () => {
         {images.length > 0 ? (
           images.map((image, index) => (
             <SwiperSlide key={image.id} className="relative w-full h-full">
-              <div className="relative w-full h-[400px] md:h-[600px] lg:h-[700px] before:absolute before:inset-0 before:bg-white/10">
+              <div className="relative w-full h-full">
                 <Image
                   src={image.file_path}
                   alt={`Slide ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="brightness-110 contrast-105"
+                  fill
+                  className="object-cover w-full h-full brightness-110 contrast-105"
                   priority={index === 0}
                 />
               </div>
             </SwiperSlide>
           ))
         ) : (
-          <p className="text-center text-white">Loading...</p>
+          <p className="text-center text-gray-500 p-4">Loading...</p>
         )}
       </Swiper>
+
+      <style jsx global>{`
+        .swiper-button-prev,
+        .swiper-button-next {
+          color: white;
+          background: rgba(0, 0, 0, 0.3);
+          padding: 8px;
+          border-radius: 9999px;
+          transition: background 0.3s ease;
+        }
+
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        .swiper-pagination-bullet {
+          background: white;
+          opacity: 0.7;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: #00b4d8;
+          opacity: 1;
+        }
+      `}</style>
     </div>
   );
 };

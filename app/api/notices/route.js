@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
-import pool from "@/lib/db"; // ✅ Import shared MySQL pool
+import pool from "@/lib/db"; // Use the shared pool
 
-// GET method to fetch notices
+// Handle GET request to fetch notices
 export async function GET() {
   try {
-    const [rows] = await pool.execute(
-      "SELECT id, title, date, file_path FROM notices ORDER BY date DESC"
-    );
+    const [rows] = await pool.execute("SELECT * FROM notices ORDER BY date DESC");
+
     return NextResponse.json(rows);
   } catch (error) {
-    console.error("Error fetching notices:", error);
-    return NextResponse.json({ message: "Database error" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Failed to fetch notices", error: error.message },
+      { status: 500 }
+    );
   }
 }

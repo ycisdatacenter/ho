@@ -367,7 +367,7 @@ export default function Sidebar({ setActiveSection }) {
               onClick={() => toggleMenu("scrollingNewsOpen")}
               className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
             >
-              <Newspaper className="w-5 h-5 mr-2" /> Scrolling News
+              <Newspaper className="w-5 h-5 mr-2" /> Tenders
               <ChevronDown
                 className={`w-4 h-4 ml-auto transition-transform ${
                   menuState.scrollingNewsOpen ? "rotate-180" : ""
@@ -378,10 +378,10 @@ export default function Sidebar({ setActiveSection }) {
               <ul className="ml-6 mt-2">
                 <li>
                   <button
-                      onClick={() => router.push("/addscrollingnews")}
+                      onClick={() => router.push("/addtenders")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
-                    <PlusCircle className="w-4 h-4 mr-2" /> Add Scrolling News
+                    <PlusCircle className="w-4 h-4 mr-2" /> Add Tenders
                   </button>
                 </li>
                 <li className="mt-2">
@@ -389,12 +389,12 @@ export default function Sidebar({ setActiveSection }) {
                       onClick={() => router.push("/managescrollingnews")}
                     className="flex items-center p-2 hover:bg-teal-700 rounded w-full text-left"
                   >
-                    <ClipboardList className="w-4 h-4 mr-2" /> Manage Scrolling News
+                    <ClipboardList className="w-4 h-4 mr-2" /> Manage Tenders
                   </button>
                 </li>
               </ul>
             )}
-
+          
             {/* Our Alumni */}
             <li className="mb-3">
             <button

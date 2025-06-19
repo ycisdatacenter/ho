@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HeaderSection from "../components/HeaderSection";
@@ -5,7 +8,22 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Link from "next/link";
 
-export default function History() {
+export default function TendersPage() {
+  const [tenders, setTenders] = useState([]);
+
+  useEffect(() => {
+    const fetchTenders = async () => {
+      try {
+        const res = await fetch("/api/getTenders");
+        const data = await res.json();
+        setTenders(data.tenders); // ✅ corrected to match API response structure
+      } catch (error) {
+        console.error("Error fetching tenders:", error);
+      }
+    };
+    fetchTenders();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <HeaderSection />
@@ -28,7 +46,7 @@ export default function History() {
         </div>
       </section>
 
-      {/* Breadcrumb Section */}
+      {/* Breadcrumb */}
       <div className="bg-teal-900 text-white py-3">
         <div className="container mx-auto flex justify-center space-x-2 text-sm">
           <Link href="/" className="flex items-center space-x-1 hover:text-yellow-400">
@@ -40,46 +58,72 @@ export default function History() {
         </div>
       </div>
 
-      {/* Main Content Section */}
-      <main className="container mx-auto px-6 py-16 space-y-10">
-        <h2 className="text-4xl font-bold text-center text-gray-800">
-          e -TENDER NOTICE<br />Rayat Shikshan Sanstha’s
+      {/* Main Content */}
+      <main className="container mx-auto px-6 py-16">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-6">
+          e-TENDER NOTICE <br /> Rayat Shikshan Sanstha’s
         </h2>
-        <p className="text-lg text-gray-700 leading-relaxed text-justify">
+
+        <p className="text-lg text-gray-700 text-justify mb-8">
           Tenders are invited from ISO Certified branded companies through e-Tendering process. Following items will be purchased through e-tender for our branches in Maharashtra State.
         </p>
 
-        {/* Tender List */}
-        <ul className="space-y-4">
-          <li>
-            <a href="/pdf/Tender no 1_code168_1 (1)-water filter.pdf" className="text-lg text-red-600 underline">Water Filter with TDS, RO, UV, UF & PVC Water Tank (50 Schools)</a>
-          </li>
-          <li>
-            <a href="/pdf/Tender no 2_code169_1 (5)_Recording studio and IT equpments.pdf" className="text-lg text-red-600 underline">Computer Items - Recording Studio, Smart board & TV, Recording room, Computers, Networking (05 Regions)</a>
-          </li>
-          <li>
-            <a href="/pdf/Tender no 3_code170_1 (4)_Split Air condition.pdf" className="text-lg text-red-600 underline">Split Air Condition (05 Regions)</a>
-          </li>
-          <li>
-            <a href="/pdf/Tender no 4_code171_1 (4)_Skill development Technicall Tools.pdf" className="text-lg text-red-600 underline">Skill Development Equipment for Technical School/Fali/ITI (70 Schools)</a>
-          </li>
-          <li>
-            <a href="/pdf/Tender no 5_code172_1 (4)_3D Printer.pdf" className="text-lg text-red-600 underline">3D Printers</a>
-          </li>
-          <li>
-            <a href="/pdf/Tender no 6_code173_1 (2)_Agriculture drone.pdf" className="text-lg text-red-600 underline">Agriculture Drone for Spraying Fertilizers</a>
-          </li>
-          <li>
-            <a href="/pdf/Tender no 7_code174_1 (4)_Furniture.pdf" className="text-lg text-red-600 underline">Competitive Examination Center – Furniture</a>
-          </li>
-        </ul>
+        {/* OFFLINE TENDERS TABLE */}
+        <h3 className="text-2xl font-semibold text-gray-700 mb-4">Offline Tenders</h3>
+        <div className="overflow-x-auto shadow border border-gray-300 rounded-lg mb-12">
+          <table className="w-full table-auto text-left text-gray-800">
+            <thead className="bg-gray-200">
+              <tr>
+                <th className="px-4 py-3 border">Sr. No</th>
+                <th className="px-4 py-3 border">Tender Name</th>
+                <th className="px-4 py-3 border">Date</th>
+                <th className="px-4 py-3 border">Document</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tenders.length > 0 ? (
+                tenders.map((tender, index) => (
+                  <tr key={tender.id} className="border-t hover:bg-gray-50">
+                    <td className="px-4 py-2 border">{index + 1}</td>
+                    <td className="px-4 py-2 border">{tender.title}</td>
+                    <td className="px-4 py-2 border">
+                      {new Date(tender.date).toLocaleDateString("en-GB", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      })}
+                    </td>
+                    <td className="px-4 py-2 border">
+                      <a
+                        href={`https://103.134.111.2:8006${tender.file_path}`} // ✅ full URL to PDF
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        View Document
+                      </a>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="text-center text-gray-500 py-6">
+                    No tenders available.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
 
-        <p className="text-lg text-gray-700 leading-relaxed text-justify">
-          The detailed information of tender such as tender fees, terms, conditions, technical specifications and approximate quantity of items are available on our portal&nbsp;
-          <a 
-            href="http://rayat.sets.co.in" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+        {/* ONLINE TENDERS LINK */}
+        <h3 className="text-2xl font-semibold text-gray-700 mb-4">Online Tenders</h3>
+        <p className="text-lg text-gray-700 text-justify">
+          The detailed information of online tenders such as tender fees, terms, conditions, technical specifications, and approximate quantity of items are available on our portal:&nbsp;
+          <a
+            href="http://rayat.sets.co.in"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-700 underline"
           >
             http://rayat.sets.co.in

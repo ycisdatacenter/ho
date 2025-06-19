@@ -1,7 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HeaderSection from "../components/HeaderSection";
@@ -10,12 +10,9 @@ import Link from "next/link";
 import Header from "../components/Header";
 
 function CircularsContent() {
-  const searchParams = useSearchParams();
-  const selectedYear = searchParams.get("year") || ""; // Get the year from URL
-  const [year, setYear] = useState(selectedYear);
+  const [searchTerm, setSearchTerm] = useState("");
   const [circulars, setCirculars] = useState([]);
 
-  // Fetch news data from API
   useEffect(() => {
     async function fetchCirculars() {
       try {
@@ -29,10 +26,15 @@ function CircularsContent() {
     fetchCirculars();
   }, []);
 
-  // Filter circulars based on the selected year
-  const filteredCirculars = year
-    ? circulars.filter((circular) => new Date(circular.date).getFullYear().toString() === year)
-    : circulars;
+  const filteredCirculars = circulars.filter((circular) => {
+    const year = new Date(circular.date).getFullYear().toString();
+    const title = circular.title.toLowerCase();
+    const search = searchTerm.toLowerCase();
+
+    return (
+      title.includes(search) || year.includes(search)
+    );
+  });
 
   return (
     <div>
@@ -40,7 +42,7 @@ function CircularsContent() {
       <Header />
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Banner */}
       <section className="relative w-full h-[100px]">
         <Image
           src="/images/academics-banner.jpg"
@@ -56,7 +58,7 @@ function CircularsContent() {
         </div>
       </section>
 
-      {/* Breadcrumb Section */}
+      {/* Breadcrumb */}
       <div className="bg-teal-900 text-white py-3">
         <div className="container mx-auto flex justify-center space-x-2 text-sm">
           <Link href="/" className="flex items-center space-x-1 hover:text-yellow-400">
@@ -68,16 +70,21 @@ function CircularsContent() {
         </div>
       </div>
 
-      {/* Year Filter Input */}
+      {/* Search Box */}
       <div className="container mx-auto py-8 px-4">
         <div className="flex justify-center mb-6">
           <input
             type="text"
-            placeholder="Enter Year"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            className="border px-4 py-2 rounded-md shadow-md text-gray-900"
+            placeholder="सर्च करा (कीवर्ड किंवा वर्ष) / Search by keyword or year"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border px-4 py-2 rounded-md shadow-md text-gray-900 w-full max-w-md"
           />
+        </div>
+
+        {/* Info */}
+        <div className="text-center mb-4 text-gray-600 text-sm">
+          Type keyword like &quot;exam&quot; or &quot;2024&quot; to search circulars.
         </div>
 
         {/* Circulars Table */}
@@ -112,7 +119,7 @@ function CircularsContent() {
               ) : (
                 <tr>
                   <td colSpan="3" className="text-center text-gray-600 py-4">
-                    No circulars found for {year}
+                    No circulars found for &quot;{searchTerm}&quot;
                   </td>
                 </tr>
               )}

@@ -10,6 +10,7 @@ export default function AddNotice() {
   const [date, setDate] = useState("");
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -20,81 +21,68 @@ export default function AddNotice() {
       return;
     }
 
+    setIsSubmitting(true);
     const formData = new FormData();
     formData.append("title", title);
     formData.append("date", date);
     formData.append("file", file);
 
-    const response = await fetch("/api/addNotices", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch("/api/addNotices", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await response.json();
-    setMessage(data.message);
+      const data = await response.json();
+      setMessage(data.message);
 
-    if (response.ok) {
-      setTitle("");
-      setDate("");
-      setFile(null);
-      router.push("/managenotices"); // Redirect to manage notices after adding
+      if (response.ok) {
+        setTitle("");
+        setDate("");
+        setFile(null);
+        setTimeout(() => router.push("/managenotices"), 1500);
+      }
+    } catch (error) {
+      setMessage("Error uploading notice.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-   <div className="flex h-screen bg-gray-50">
-       <Sidebar setActiveSection={(section) => {
-                         if (section === "addNews") {
-                           router.push("/addnews");
-                         } else if (section === "manageNews") {
-                           router.push("/managenews");
-                         } else if (section === "addNotice") {
-                           router.push("/addnotice");
-                         } else if (section === "manageNotices") {
-                           router.push("/managenotices");
-                         } else if (section === "addEvent") {
-                           router.push("/adddocuments");
-                         } else if (section === "manageEvents") {
-                           router.push("/managedocuments");
-                         } else if (section === "manageSchoolNews") {
-                           router.push("/adminschoolnews");
-                         } else if (section === "manageSchoolEvents") {
-                           router.push("/manageadminevents");
-                         } else if (section === "addGallery") {
-                           router.push("/addimage");
-                         } else if (section === "addRecentActivity") {
-                           router.push("/addevents");
-                         } else if (section === "manageRecentActivities") {
-                           router.push("/manageevents");
-                         } else if (section === "addAchievement") {
-                           router.push("/addachievements");
-                         } else if (section === "manageAchievements") {
-                           router.push("/manageachievements");
-                         } else if (section === "addAchievementnews") {
-                           router.push("/addachievementsnews");
-                         } else if (section === "manageAchievementsnews") {
-                           router.push("/manageachievementsnews");
-                         } else if (section === "addAlumni") {
-                           router.push("/addalumni");
-                         } else if (section === "manageAlumni") {
-                           router.push("/managealumni");
-                         } else if (section === "managefeedbackNews") {
-                           router.push("/managefeedback");
-                         } else if (section === "addrecruitmentNews") {
-                           router.push("/addrecruitment");
-                         } else if (section === "managerecruitmentNews") {
-                           router.push("/managerecruitment");
-                         } else if (section === "addScrollingNews") {
-                           router.push("/addscrollingnews");
-                         } else if (section === "manageScrollingNews") {
-                           router.push("/managescrollingnews");
-                         } 
-                         
-                       }} />
+    <div className="flex h-screen bg-gray-50">
+      <Sidebar
+        setActiveSection={(section) => {
+          const routes = {
+            addNews: "/addnews",
+            manageNews: "/managenews",
+            addNotice: "/addnotice",
+            manageNotices: "/managenotices",
+            addEvent: "/adddocuments",
+            manageEvents: "/managedocuments",
+            manageSchoolNews: "/adminschoolnews",
+            manageSchoolEvents: "/manageadminevents",
+            addGallery: "/addimage",
+            addRecentActivity: "/addevents",
+            manageRecentActivities: "/manageevents",
+            addAchievement: "/addachievements",
+            manageAchievements: "/manageachievements",
+            addAchievementnews: "/addachievementsnews",
+            manageAchievementsnews: "/manageachievementsnews",
+            addAlumni: "/addalumni",
+            manageAlumni: "/managealumni",
+            managefeedbackNews: "/managefeedback",
+            addrecruitmentNews: "/addrecruitment",
+            managerecruitmentNews: "/managerecruitment",
+            addScrollingNews: "/addscrollingnews",
+            manageScrollingNews: "/managescrollingnews",
+          };
+          if (routes[section]) router.push(routes[section]);
+        }}
+      />
 
       <div className="flex-1 flex flex-col">
         <Topbar />
-
         <main className="flex-1 p-8">
           <div className="max-w-lg mx-auto bg-white p-6 rounded shadow">
             <h2 className="text-xl font-bold mb-4">Add Notice</h2>
@@ -129,8 +117,14 @@ export default function AddNotice() {
                   required
                 />
               </div>
-              <button type="submit" className="bg-teal-900 text-white p-2 rounded w-full">
-                Upload Notice
+              <button
+                type="submit"
+                className={`bg-teal-900 text-white p-2 rounded w-full ${
+                  isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+                }`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Uploading..." : "Upload Notice"}
               </button>
             </form>
           </div>
